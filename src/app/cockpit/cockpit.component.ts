@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ServerElementComponent } from "./../server-element/server-element.component";
 
 @Component({
   selector: 'app-cockpit',
@@ -15,18 +16,18 @@ export class CockpitComponent implements OnInit {
   newServerContent = '';
 
   onAddServer() {
-    this.serverElements.push({
-      type: 'server',
-      name: this.newServerName,
-      content: this.newServerContent
-    });
+    // this.serverElements.push({
+    //   type: 'server',
+    //   name: this.newServerName,
+    //   content: this.newServerContent
+    // });
   }
 
   onAddBlueprint() {
-    this.serverElements.push({
-      type: 'blueprint',
-      name: this.newServerName,
-      content: this.newServerContent
-    });
+    // this.serverElements.push({
+    //   type: 'blueprint',
+    //   name: this.newServerName,
+    //   content: this.newServerContent
+    // });
   }
 }
