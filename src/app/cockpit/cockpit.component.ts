@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ServerElementComponent } from "./../server-element/server-element.component";
 
 @Component({
@@ -7,27 +7,32 @@ import { ServerElementComponent } from "./../server-element/server-element.compo
   styleUrls: ['./cockpit.component.css']
 })
 export class CockpitComponent implements OnInit {
-
+  /**
+   * Create two new properties for binding data,
+   * EventEmitter is use to create to customs event from angular core module.
+   * its data type is generic use with and create a constructor to create a new object of `EventEmitter<>()`.
+   */
+  @Output() serverCreated = new EventEmitter<{serverName: string, serverContent: string}>();
+  @Output('bpCreated') blueprintCreated = new EventEmitter<{ serverName: string, serverContent: string }>();
+  newServerName = '';
+  newServerContent = '';
   constructor() { }
 
   ngOnInit(): void {
   }
-  newServerName = '';
-  newServerContent = '';
-
+  
   onAddServer() {
-    // this.serverElements.push({
-    //   type: 'server',
-    //   name: this.newServerName,
-    //   content: this.newServerContent
-    // });
+    this.serverCreated.emit( {
+      serverName: this.newServerName,
+      serverContent: this.newServerContent
+    } );
   }
 
   onAddBlueprint() {
-    // this.serverElements.push({
-    //   type: 'blueprint',
-    //   name: this.newServerName,
-    //   content: this.newServerContent
-    // });
+    this.blueprintCreated.emit( {
+      serverName: this.newServerName,
+      serverContent: this.newServerContent
+    } );
+
   }
 }
